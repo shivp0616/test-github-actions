@@ -1,0 +1,20 @@
+---
+name: Test
+
+on:
+  workflow_run:
+    workflows:
+      - workflow1
+    types:
+      - completed
+
+jobs:
+  test-job:
+    name: Test Job 1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+      - run: git branch
+      - run: env

@@ -1,0 +1,22 @@
+---
+name: workflow1
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  job1:
+    name: Job 1
+    runs-on: ubuntu-latest
+    steps:
+      - run: env
+  job2:
+    name: job2
+    environment:
+        name: test
+        url: ${{ steps.deploy_staging.outputs.webapp-url }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print ABC
+      run: echo "abC"
