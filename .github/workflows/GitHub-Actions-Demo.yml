@@ -9,28 +9,28 @@ jobs:
         name: dev
     runs-on: ubuntu-latest
     steps:
-      - name: Print the name of the job
-        run: echo "🍏 This job's name is $GITHUB_JOB."
-      - name: Print name of the workflow
-        run: echo "This is the name of the workflow $GITHUB_WORKFLOW."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      # - name: Print the name of the job
+      #   run: echo "🍏 This job's name is $GITHUB_JOB."
+      # - name: Print name of the workflow
+      #   run: echo "This is the name of the workflow $GITHUB_WORKFLOW."
+      # - name: List files in the repository
+      #   run: |
+      #     ls ${{ github.workspace }}
+      # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      # - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
+      # - name: List files in the repository
+      #   run: |
+      #     ls ${{ github.workspace }}
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
-          push: false
-          tags: user/app:latest
+          push: true
+          tags: shivp0616/test-repo:dev-latest
       - run: echo "🍏 This job's status is ${{ job.status }}."
   stage:
     runs-on: ubuntu-latest
