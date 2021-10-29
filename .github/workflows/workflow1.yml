@@ -19,3 +19,4 @@ jobs:
     steps:
     - name: Print ABC
       run: echo "abC"
+      run: echo ${{ steps.deploy_staging.outputs.webapp-url }}
